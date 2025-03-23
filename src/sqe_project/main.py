@@ -1,10 +1,9 @@
-from agents import BookWriterAgents
-from tasks import BookWriterTasks
+from agents import Project_Manager_Agents
+from tasks import Project_Manager_Tasks
 from crewai import Crew , Process ,LLM
 import streamlit as st
 from dotenv import load_dotenv
 import os
-
 
 
 load_dotenv()
@@ -13,60 +12,93 @@ api_key=os.getenv("GEMINI_API_KEY")
 
 model = LLM(model="gemini/gemini-2.0-flash-exp" ,api_key=api_key)
 
-# var
 
-word_count = st.text_input("word_count")
+############################################################################################
+#Taking Inputs
+############################################################################################
 
-Book_Title = st.text_input("Book_Title")
+project_Title = st.text_input("project_Title")
 
-Author_Name = st.text_input("Author_Name")
-
-Target_Audience = st.text_input("Target_Audience")
-
-Writing_Style = st.text_input("Writing_Style")
+Project_Requirements = st.text_input("Project_Requirements")
 
 
-# obj
-
-agents = BookWriterAgents()
-tasks = BookWriterTasks()
 
 
-# Agents
+############################################################################################
+# Creating Objects of Agents and Tasks
+############################################################################################
 
-Content_Strategist = agents.Content_Strategist()
-Writer = agents.Writer()
-
-# Tasks
+agents = Project_Manager_Agents()
+tasks = Project_Manager_Tasks()
 
 
-Content_Strategist_Task = tasks.Content_Strategist_Task(
-    agent = Content_Strategist,
-    word_count = word_count,
-    Book_Title = Book_Title,
-    Author_Name = Author_Name,
-    Target_Audience = Target_Audience,
-    Writing_Style = Writing_Style,
+
+############################################################################################
+# Imporinting all Agents
+############################################################################################
+
+Project_Analysis_Agent = agents.Project_Analysis_Agent()    # Agent 1
+Task_Breakdown_Agent = agents.Task_Breakdown_Agent()    # Agent 2
+Risk_Analysis_Agent = agents.Risk_Analysis_Agent()      # Agent 3
+Final_Report_Agent = agents.Final_Report_Agent()        # Agent 4
+
+
+
+
+# def save_to_markdown(text, filename="output.md"):
+#     with open(filename, "w", encoding="utf-8") as file:
+#         file.write(text)
+#     print(f"Markdown file saved as {filename}")
+
+
+
+
+
+
+############################################################################################
+# Assigning Tasks to Each Agent
+############################################################################################
+
+# Task 1
+Project_Analysis_Task = tasks.Project_Analysis_Task(
+
+    agent = Project_Analysis_Agent,
+
+    project_Title = project_Title,
+    Project_Requirements = Project_Requirements
+)
+
+# Task 2
+Task_Breakdown_Task = tasks.Task_Breakdown_Task(
+    agent = Task_Breakdown_Agent,
+    context = [Project_Analysis_Task],
+    # callback = save_to_markdown,
+
+)
+
+# Task 3
+Risk_Analysis_Task = tasks.Risk_Analysis_Task(
+    agent = Risk_Analysis_Agent,
+    context = [Task_Breakdown_Task],
+    # callback = save_to_markdown,
+
+)
+
+# Task 4
+Final_Report_Task = tasks.Final_Report_Task(
+    agent = Final_Report_Agent,
+    context = [Risk_Analysis_Task],
+    # callback = save_to_markdown,
+
 )
 
 
-def save_to_markdown(text, filename="output.md"):
-    with open(filename, "w", encoding="utf-8") as file:
-        file.write(text)
-    print(f"Markdown file saved as {filename}")
 
 
 
-Writer_Task = tasks.Writer_Task(
-    agent = Writer,
-    context = [Content_Strategist_Task],
-    callback = save_to_markdown,
-
-)
-
-
-
-
+############################################################################################
+# Creating Crew here
+############################################################################################
 
 crew =  Crew(
 

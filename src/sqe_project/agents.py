@@ -7,7 +7,7 @@ api_key=os.getenv("GEMINI_API_KEY")
 
 model = LLM(model="gemini/gemini-2.0-flash-exp" ,api_key=api_key)
 
-class BookWriterAgents:
+class Project_Manager_Agents:
 
     def Project_Analysis_Agent(self):
         return Agent(
@@ -21,9 +21,9 @@ class BookWriterAgents:
                             development planning. Skilled in agile methodologies, team structuring, and resource allocation, ensuring 
                             every project starts with a clear roadmap for success.""",
 
-            verbose=True,
+            # verbose=True,
             llm = model,
-            allow_delegation=True,
+            # allow_delegation=True,
             
         )
     
@@ -40,11 +40,11 @@ class BookWriterAgents:
 
             backstory= """A senior project architect with 10+ years of experience in task management, workflow optimization, 
                         and team coordination. Expert in agile development, sprint planning, and process automation to ensure 
-                        efficiency and on-time delivery."""
+                        efficiency and on-time delivery.""",
 
-            verbose=True,
+            # verbose=True,
             llm = model,
-            allow_delegation=True,
+            # allow_delegation=True,
 
         )
     
@@ -62,9 +62,9 @@ class BookWriterAgents:
                         planning, and crisis management. Expert in identifying vulnerabilities, assessing risk probability, and 
                         implementing proactive solutions to minimize disruptions.""",
 
-            verbose=True,
+            # verbose=True,
             llm = model,
-            allow_delegation=True,
+            # allow_delegation=True,
 
         )
     ################################################################################################################
@@ -82,8 +82,8 @@ class BookWriterAgents:
                         detailed project reports, business proposals, and post-mortem analyses. Expert in documentation, performance 
                         evaluation, and delivering structured insights for decision-making.""",
             
-            verbose=True,
+            # verbose=True,
             llm = model,
-            allow_delegation=True,
+            # allow_delegation=True,
 
         )

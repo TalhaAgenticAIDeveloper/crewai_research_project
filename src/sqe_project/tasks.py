@@ -9,9 +9,9 @@ os.getenv("GEMINI_API_KEY")
 
 research_tool = SerperDevTool()
 
-class BookWriterTasks():
+class Project_Manager_Tasks():
 
-
+    # Task 1
     def Project_Analysis_Task(self, agent, Project_Title, Requirements):
         return Task(
             description=f"""Analyze the user-defined project '{Project_Title}' by reviewing its requirements and 
@@ -34,6 +34,7 @@ class BookWriterTasks():
     ##############################################################################################################
     ##############################################################################################################
 
+    # Task 2
     def Task_Breakdown_Task(self, agent, context):
         return Task(
             description=f"""Break down the project into specific tasks based on the provided team structure.
@@ -50,6 +51,7 @@ class BookWriterTasks():
     ##############################################################################################################
     ##############################################################################################################
 
+    # Task 3
     def Risk_Analysis_Task(self, agent, context):
         return Task(
             description = f"""Perform a risk analysis for the project based on the provided work breakdown structure.
@@ -70,7 +72,7 @@ class BookWriterTasks():
     ##############################################################################################################
     ##############################################################################################################
 
-
+    # Task 4
     def Final_Report_Task(self, agent, context):
         return Task(
             description = f"""Compile the final project report summarizing all aspects, including team composition, work 
