@@ -112,8 +112,23 @@ crew =  Crew(
 
 )
 
+# def save_output_to_file(output, filename="agent_output.md"):
+#     """Saves the output of an agent to a file."""
+#     with open(filename, "w", encoding="utf-8") as file:
+#         file.write(output)
+#     print(f"Output successfully saved to {filename}")
+
+
+def save_output_to_markdown(output, filename="agent_output.md"):
+    """Saves the output in a structured Markdown file."""
+    with open(filename, "w", encoding="utf-8") as file:
+        # file.write("# Agent Output\n\n")  # Main heading
+        file.write(output.replace("**", "")) 
+
+
 action = st.button("submit")
 if action:
     with st.spinner("Processing... Please wait"):  # Show loading spinner
         results = crew.kickoff()
+        save_output_to_markdown(results.raw)
         st.markdown(results.raw)
