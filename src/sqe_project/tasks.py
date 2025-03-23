@@ -12,14 +12,14 @@ research_tool = SerperDevTool()
 class Project_Manager_Tasks():
 
     # Task 1
-    def Project_Analysis_Task(self, agent, Project_Title, Requirements):
+    def Project_Analysis_Task(self, agent, project_Title, Project_Requirements):
         return Task(
-            description=f"""Analyze the user-defined project '{Project_Title}' by reviewing its requirements and 
+            description=f"""Analyze the user-defined project '{project_Title}' by reviewing its requirements and 
                 determining the necessary team structure.
                 
                 Parameters:
-                - Project Title: {Project_Title}
-                - Requirements: {Requirements}
+                - Project Title: {project_Title}
+                - Requirements: {Project_Requirements}
 
                 The agent will evaluate the project's complexity and suggest the required roles (frontend developers, 
                 backend developers, UI/UX designers, testers, project managers, etc.).

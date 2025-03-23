@@ -2,7 +2,9 @@ from agents import Project_Manager_Agents
 from tasks import Project_Manager_Tasks
 from crewai import Crew , Process ,LLM
 import streamlit as st
+import markdown
 from dotenv import load_dotenv
+
 import os
 
 
@@ -87,7 +89,7 @@ Risk_Analysis_Task = tasks.Risk_Analysis_Task(
 # Task 4
 Final_Report_Task = tasks.Final_Report_Task(
     agent = Final_Report_Agent,
-    context = [Risk_Analysis_Task],
+    context = [Project_Analysis_Task,Task_Breakdown_Task,Risk_Analysis_Task],
     # callback = save_to_markdown,
 
 )
@@ -102,8 +104,8 @@ Final_Report_Task = tasks.Final_Report_Task(
 
 crew =  Crew(
 
-    agents=[Content_Strategist, Writer],
-    tasks=[Content_Strategist_Task, Writer_Task],
+    agents=[Project_Analysis_Agent, Task_Breakdown_Agent, Risk_Analysis_Agent, Final_Report_Agent],
+    tasks=[Project_Analysis_Task, Task_Breakdown_Task, Risk_Analysis_Task, Final_Report_Task],
     verbose=True,
     # process = Process.hierarchical,
     # manager_llm = model,
@@ -114,4 +116,4 @@ action = st.button("submit")
 if action:
     with st.spinner("Processing... Please wait"):  # Show loading spinner
         results = crew.kickoff()
-        st.write(results)
+        st.markdown(results.raw)
