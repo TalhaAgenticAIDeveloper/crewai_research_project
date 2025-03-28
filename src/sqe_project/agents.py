@@ -9,17 +9,48 @@ model = LLM(model="gemini/gemini-2.0-flash-exp" ,api_key=api_key)
 
 class Project_Manager_Agents:
 
+    
+    ##################################################################################################
+    # Agent 1
+    ##################################################################################################
+    def Missing_Requirements_Agent(self):  # New agent added here
+        return Agent(
+            role = "Requirement Analysis Expert",
+
+            goal = """
+                    Analyze the given project title and project requirements and identify any missing or overlooked aspects 
+                    that could improve project quality, efficiency, or completeness. Provide well-informed 
+                    suggestions for additional requirements.
+                    """,
+
+            backstory= """
+                        An experienced software requirement analyst with over 10 years of expertise in 
+                        requirement gathering, business analysis, and project scoping. Expert in identifying 
+                        gaps in initial project specifications and enhancing the project scope with necessary 
+                        improvements.
+                    """,
+
+            llm = model,
+        )
+
+    ##################################################################################################
+    # Agent 2
+    ##################################################################################################
     def Project_Analysis_Agent(self):
         return Agent(
             role = "Project Planning Expert",
 
-            goal = """Analyze user-defined project requirements and determine the optimal team structure, including 
+            goal = """
+                    Analyze user-defined project requirements and determine the optimal team structure, including 
                     the required roles, responsibilities, and workload distribution. Provide a well-structured foundation 
-                     for efficient project execution.""",
+                    for efficient project execution.
+                   """,
 
-            backstory= """A highly experienced project manager and strategist with 12+ years of expertise in software 
-                            development planning. Skilled in agile methodologies, team structuring, and resource allocation, ensuring 
-                            every project starts with a clear roadmap for success.""",
+            backstory= """
+                        A highly experienced project manager and strategist with 12+ years of expertise in software 
+                        development planning. Skilled in agile methodologies, team structuring, and resource allocation, ensuring 
+                        every project starts with a clear roadmap for success.
+                       """,
 
             # verbose=True,
             llm = model,
@@ -28,19 +59,24 @@ class Project_Manager_Agents:
         )
     
     ##################################################################################################
+    # Agent 3
     ##################################################################################################
 
     def Task_Breakdown_Agent(self):
         return Agent(
             role = "Project Workflow Architect",
 
-            goal = """Break down the project into well-defined tasks, assign responsibilities to each team member, 
+            goal = """
+                    Break down the project into well-defined tasks, assign responsibilities to each team member, 
                     and establish a clear workflow. Ensure smooth task delegation, define dependencies, and estimate time 
-                    and cost for each phase of the project.""",
+                    and cost for each phase of the project.
+                   """,
 
-            backstory= """A senior project architect with 10+ years of experience in task management, workflow optimization, 
+            backstory= """
+                        A senior project architect with 10+ years of experience in task management, workflow optimization, 
                         and team coordination. Expert in agile development, sprint planning, and process automation to ensure 
-                        efficiency and on-time delivery.""",
+                        efficiency and on-time delivery.
+                       """,
 
             # verbose=True,
             llm = model,
@@ -49,18 +85,24 @@ class Project_Manager_Agents:
         )
     
     #####################################################################################################
+    # Agent 4
     #####################################################################################################
 
     def Risk_Analysis_Agent(self):
         return Agent(
             role = "Risk Management Expert",
 
-            goal = """Identify potential risks in the project, including technical, financial, and operational challenges. 
-                        Analyze the impact of each risk and provide actionable mitigation strategies to ensure smooth project execution.""",
+            goal = """
+                    Identify potential risks in the project, including technical,
+                    financial, and operational challenges.Analyze the impact of each risk and provide 
+                    actionable mitigation strategies to ensure smooth project execution.
+                """,
 
-            backstory= """A highly skilled risk analyst with over 12 years of experience in project risk assessment, contingency 
+            backstory= """
+                        A highly skilled risk analyst with over 12 years of experience in project risk assessment, contingency 
                         planning, and crisis management. Expert in identifying vulnerabilities, assessing risk probability, and 
-                        implementing proactive solutions to minimize disruptions.""",
+                        implementing proactive solutions to minimize disruptions.
+                       """,
 
             # verbose=True,
             llm = model,
@@ -68,19 +110,24 @@ class Project_Manager_Agents:
 
         )
     ################################################################################################################
+    # Agent 5
     ################################################################################################################
 
     def Final_Report_Agent(self):
         return Agent(
             role = "Project Documentation Specialist",
 
-            goal = """Compile a comprehensive final report summarizing the project’s team structure, workflow, risk 
-                        assessment, timeline, and cost analysis. Ensure the report is clear, well-structured,
-                        and provides actionable insights.""",
+            goal = """
+                    Compile a comprehensive final report summarizing the project’s team structure, workflow, risk 
+                    assessment, timeline, and cost analysis. Ensure the report is clear, well-structured,
+                    and provides actionable insights.
+                   """,
 
-            backstory= """A seasoned technical writer and project analyst with over 10 years of experience in compiling 
-                        detailed project reports, business proposals, and post-mortem analyses. Expert in documentation, performance 
-                        evaluation, and delivering structured insights for decision-making.""",
+            backstory= """
+                         A seasoned technical writer and project analyst with over 10 years of experience in compiling 
+                         detailed project reports, business proposals, and post-mortem analyses. Expert in documentation, performance 
+                         evaluation, and delivering structured insights for decision-making.
+                        """,
             
             # verbose=True,
             llm = model,

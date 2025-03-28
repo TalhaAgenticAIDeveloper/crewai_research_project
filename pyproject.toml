@@ -16,6 +16,7 @@ dependencies = [
 
 [project.scripts]
 sqe-project = "sqe_project:main"
+chatbot = "sqe_project:main1"
 
 [build-system]
 requires = ["hatchling"]
