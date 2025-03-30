@@ -13,28 +13,12 @@ class Project_Manager_Agents:
     ##################################################################################################
     # Agent 1
     ##################################################################################################
-    def Missing_Requirements_Agent(self):  # New agent added here
-        return Agent(
-            role = "Requirement Analysis Expert",
+    
 
-            goal = """
-                    Analyze the given project title and project requirements and identify any missing or overlooked aspects 
-                    that could improve project quality, efficiency, or completeness. Provide well-informed 
-                    suggestions for additional requirements.
-                    """,
-
-            backstory= """
-                        An experienced software requirement analyst with over 10 years of expertise in 
-                        requirement gathering, business analysis, and project scoping. Expert in identifying 
-                        gaps in initial project specifications and enhancing the project scope with necessary 
-                        improvements.
-                    """,
-
-            llm = model,
-        )
+         
 
     ##################################################################################################
-    # Agent 2
+    # Agent 1
     ##################################################################################################
     def Project_Analysis_Agent(self):
         return Agent(
@@ -59,7 +43,7 @@ class Project_Manager_Agents:
         )
     
     ##################################################################################################
-    # Agent 3
+    # Agent 2
     ##################################################################################################
 
     def Task_Breakdown_Agent(self):
@@ -85,7 +69,7 @@ class Project_Manager_Agents:
         )
     
     #####################################################################################################
-    # Agent 4
+    # Agent 3
     #####################################################################################################
 
     def Risk_Analysis_Agent(self):
@@ -110,7 +94,7 @@ class Project_Manager_Agents:
 
         )
     ################################################################################################################
-    # Agent 5
+    # Agent 4
     ################################################################################################################
 
     def Final_Report_Agent(self):

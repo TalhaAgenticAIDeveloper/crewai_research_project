@@ -11,84 +11,38 @@ research_tool = SerperDevTool()
 
 class Project_Manager_Tasks():
 
-    ##############################################################################################################
-        # Task 1
-    ##############################################################################################################
-    def Missing_Requirements_Task(self, agent, project_Title, Project_Requirements):
-        return Task(
-            description=f"""Analyze the given project requirements for '{project_Title}' and identify any missing or 
-                overlooked aspects that could improve project quality, efficiency, or completeness.
-
-                Parameters:
-                - Project Title: {project_Title}
-                - Given Requirements: {Project_Requirements}
-
-                The agent should:
-                - Compare the provided requirements with industry standards.
-                - Identify any missing technical, functional, or security requirements.
-                - Suggest enhancements or additional requirements to refine the project scope.
-            """,
-
-            tools = [research_tool],  # Optional: Can use research tools if needed
-            agent = agent,
-            expected_output = "A refined list of project requirements, including suggested additions or improvements."
-        )
-
-
-
-
-
-
-    ##############################################################################################################
-        # Task 2
-    ##############################################################################################################
-    # def Project_Analysis_Task(self, agent, project_Title, Project_Requirements,context):
-    #     return Task(
-    #         description=f"""Analyze the user-defined project '{project_Title}' by reviewing its requirements and inhanced requirements{context}
-
-    #            and determining the necessary team structure.
-                
-    #             Parameters:
-    #             - Project Title: {project_Title}
-    #             - Requirements: {Project_Requirements}
-
-    #             The agent will evaluate the project's complexity and suggest the required roles (frontend developers, 
-    #             backend developers, UI/UX designers, testers, project managers, etc.).
-    #         """,
-    #         context = context,
-    #         tools = [],
-    #         agent = agent,
-    #         expected_output = "A structured report detailing the required team composition and estimated team size."
-    # )
+##############################################################################################################
+    # Task 1
+##############################################################################################################
     
-    def Project_Analysis_Task(self, agent, project_Title, Project_Requirements, context):
+    def Project_Analysis_Task(self, agent, project_Title, Project_Requirements, further_context):
         return Task(
             description=f"""Analyze the user-defined project '{project_Title}' by reviewing its initial and enhanced requirements. 
 
             The agent will:
             - Evaluate the given project requirements: {Project_Requirements}
-            - Incorporate additional enhancements from previous analysis: {context}
+            - Incorporate additional enhancements from previous analysis: {further_context}
             - Determine the necessary team structure and skill sets required.
 
             Parameters:
             - Project Title: {project_Title}
             - Initial Requirements: {Project_Requirements}
-            - Enhanced Requirements from previous analysis: {context}
+            - Enhanced Requirements from previous analysis: {further_context}
 
             The agent will analyze the complexity and scope of the project, 
             identify the required team roles (frontend developers, backend developers, UI/UX designers, testers, project managers, etc.), 
             and estimate the ideal team size.
             """,
-            context=context,
+            
             tools=[],
             agent=agent,
             expected_output="A structured report detailing the required team composition, skill set, and estimated team size."
     )
 
 
-    ##############################################################################################################
-        # Task 3
-    ##############################################################################################################
+##############################################################################################################
+    # Task 2
+##############################################################################################################
  
     def Task_Breakdown_Task(self, agent, context):
         return Task(
@@ -104,9 +58,9 @@ class Project_Manager_Tasks():
 
 
 
-    ##############################################################################################################
-        # Task 4
-    ##############################################################################################################
+##############################################################################################################
+    # Task 3
+##############################################################################################################
 
     def Risk_Analysis_Task(self, agent, context):
         return Task(
@@ -126,9 +80,9 @@ class Project_Manager_Tasks():
 
 
 
-    ##############################################################################################################
-        # Task 5
-    ##############################################################################################################
+##############################################################################################################
+    # Task 4
+##############################################################################################################
 
     def Final_Report_Task(self, agent, context):
         return Task(
