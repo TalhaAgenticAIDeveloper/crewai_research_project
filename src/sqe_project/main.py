@@ -93,8 +93,7 @@ if st.session_state.chat_history:
                 st.rerun()
             else:
                 st.warning("⚠️ Please enter an answer before proceeding.")
-else:
-    st.write("answered all questions")
+
 ############################################################################################
 # Creating Agents and Tasks
 ############################################################################################
