@@ -36,7 +36,7 @@ def create_prompt_for_questions(project_title, project_requirements):
         - Do **not** provide explanations or extra text—only the questions.
 
         ### **Output Format:**
-        - The response should **only** contain 3 to 5 **clear, feature-related questions**.
+        - The response should **only** contain 10 to 15 **clear, feature-related questions**.
         - Ensure each question starts with phrases like:
           - "Do you want to add..."
           - "Would you like to include..."
