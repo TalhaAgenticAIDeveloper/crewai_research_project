@@ -30,7 +30,7 @@ def create_prompt_for_questions(project_title, project_requirements):
 
         ### **Instructions:**
         - Carefully analyze the **project title** and **existing requirements**.
-        - Identify **3 to 5 critical missing features** that would improve the project.
+        - Identify **10 to 15 critical missing features** that would improve the project.
         - **Each missing feature must be framed as a question**, explicitly asking if it should be added.
         - The questions must be **feature-focused**, practical, and essential for project success.
         - Do **not** provide explanations or extra text—only the questions.
