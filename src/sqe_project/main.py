@@ -30,13 +30,13 @@ def create_prompt_for_questions(project_title, project_requirements):
 
         ### **Instructions:**
         - Carefully analyze the **project title** and **existing requirements**.
-        - Identify **10 to 15 critical missing features** that would improve the project.
+        - Identify **8 to 12 critical missing features** that would improve the project.
         - **Each missing feature must be framed as a question**, explicitly asking if it should be added.
         - The questions must be **feature-focused**, practical, and essential for project success.
         - Do **not** provide explanations or extra text—only the questions.
 
         ### **Output Format:**
-        - The response should **only** contain 10 to 15 **clear, feature-related questions**.
+        - The response should **only** contain 8 to 12 **clear, feature-related questions**.
         - Ensure each question starts with phrases like:
           - "Do you want to add..."
           - "Would you like to include..."
@@ -145,7 +145,7 @@ def save_output_to_markdown(output, filename="agent_output.md"):
     with open(filename, "w", encoding="utf-8") as file:
         file.write(output.replace("**", ""))
 
-if st.button("Submit"):
+if st.button("Generate Report"):
     with st.spinner("Processing... Please wait"):
         results = crew.kickoff()
         output_text = results.raw if hasattr(results, 'raw') else str(results)
